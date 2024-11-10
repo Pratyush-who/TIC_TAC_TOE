@@ -1,0 +1,115 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.game{
+    height: 60vh;
+    width: 31vw;
+    background-color: transparent;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+.box{
+    height: 18vh;
+    width: 9vw;
+    font-size: 70px;
+    background-color: #ffffff00;
+}
+.container{
+    height: 70vh;
+    width: 45vw;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px white dashed;
+    border-radius: 20px;
+}
+.outerbg{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.home{
+    position: absolute;
+    top: 20px;
+    left: 1490px;
+    font-size: xx-large;
+}
+.tooltip-text{
+      width: 40px;
+      font-size: medium;
+      background-color: #FFD700;
+      color: white;
+      text-align: center;
+      padding: 5px;
+      border-radius: 5px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.5s;
+}
+.home:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  } 
+  .sel1{
+    color: rgba(0, 0, 0, 0);
+    background-image: url("pumpk.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .sel2{
+    color: rgba(0, 0, 0, 0.012);
+    background-image: url("ghoost.png");
+    background-size: cover;
+  }
+.msg{
+color: white;
+font-size: 20px;
+position: absolute;
+bottom: 20px;
+left: 480px;
+font-size: 40px;
+}
+.hide{
+    display: none;
+} 
+.scorep{
+   height: 300px;
+   width: 150px;
+   color: white;
+   position: absolute;
+   left: 100px;
+   background-image: url(./pumpk.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   font-size: 150px;
+}
+.scoreg{
+    height: 300px;
+    width: 150px;
+    color: white;
+    background-color: rgba(255, 192, 203, 0);
+    position: absolute;
+    right: 100px;
+    background-image: url(./ghoost.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    font-size: 150px;
+}
+.haha{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
