@@ -16,7 +16,9 @@
     height: 18vh;
     width: 9vw;
     font-size: 70px;
-    background-color: #ffffff00;
+    background-color: #1c19194f;
+    border-radius: 25px;
+    border: 2px solid black;
 }
 .container{
     height: 70vh;
@@ -59,10 +61,10 @@
       opacity: 0;
       transition: opacity 0.5s;
 }
-.home:hover .tooltip-text {
+/* .home:hover .tooltip-text {
     visibility: visible;
     opacity: 1;
-  } 
+  }  */
   .sel1{
     color: rgba(0, 0, 0, 0);
     background-image: url("pumpk.png");
@@ -85,6 +87,19 @@ font-size: 40px;
 .hide{
     display: none;
 } 
+.zero button{
+    font-size: 16px;
+    background-color: #FFD700;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+position: absolute;
+top: 20px;
+right: 60px;
+}
 .scorep{
    height: 300px;
    width: 150px;

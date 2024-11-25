@@ -2,11 +2,19 @@ let boxes = document.querySelectorAll(".box");
 let resetBtn = document.querySelector(".home");
 let msgcont = document.querySelector(".msg-cont");
 let msg = document.querySelector(".msg");
-let winP = 0;
-let winG = 0;
 let turno = true;
-let scorep = document.querySelector(".scorep");
-let scoreg = document.querySelector(".scoreg");
+let rescore=document.querySelector(".zero-btn");
+let scorep = document.querySelector(".scorep .xyz");
+let scoreg = document.querySelector(".scoreg .xyz");
+
+// Retrieve scores from localStorage (or initialize them if not found)
+let winP = localStorage.getItem("winP") ? parseInt(localStorage.getItem("winP")) : 0;
+let winG = localStorage.getItem("winG") ? parseInt(localStorage.getItem("winG")) : 0;
+
+// Display initial scores
+scorep.innerText = winG;
+scoreg.innerText = winP;
+
 const winpat = [
   [0, 1, 2],
   [0, 3, 6],
@@ -17,6 +25,7 @@ const winpat = [
   [6, 7, 8],
   [2, 5, 8],
 ];
+
 const resetgame = () => {
   turno = true;
   enableBoxes();
@@ -27,39 +36,41 @@ const resetgame = () => {
   });
   msgcont.classList.add("hide");
 };
+
 boxes.forEach((box) => {
   box.addEventListener("click", () => {
-    // console.log("Clicked");
     if (turno) {
-      // console.log(turno)
       box.innerText = "Pumpkin";
       box.classList.add("sel1");
       turno = false;
     } else {
       box.innerText = "Ghost";
       box.classList.add("sel2");
-      // console.log(turno)
       turno = true;
     }
     checkWinner();
   });
 });
-const disableBoxes = (e) => {
+
+const disableBoxes = () => {
   for (let box of boxes) {
     box.disabled = true;
   }
 };
+
 const enableBoxes = () => {
   for (let box of boxes) {
     box.disabled = false;
     box.innerText = "";
   }
 };
+
 const showWinner = (winner) => {
-  msg.innerText = `Congratulation, Winner is ${winner}`;
+  msg.innerText = `Congratulations, Winner is ${winner}`;
   msgcont.classList.remove("hide");
   disableBoxes();
 };
+
 const checkWinner = () => {
   for (let pattern of winpat) {
     let pos1val = boxes[pattern[0]].innerText;
@@ -68,20 +79,32 @@ const checkWinner = () => {
 
     if (pos1val != "" && pos2val != "" && pos3val != "") {
       if (pos1val === pos2val && pos2val === pos3val) {
-        // console.log("winner",pos1val);
         showWinner(pos1val);
 
         if (pos1val === "Pumpkin") {
           winG++;
-          console.log("X" + winG);
           scorep.innerText = winG;
+          localStorage.setItem("winG", winG); // Save Pumpkin score
         } else {
           winP++;
-          console.log("O" + winP);
           scoreg.innerText = winP;
+          localStorage.setItem("winP", winP); // Save Ghost score
         }
       }
     }
   }
 };
+
 resetBtn.addEventListener("click", resetgame);
+
+const resetscore =()=>{
+winP=0;
+winG=0;
+scorep.innerText = winG;
+  scoreg.innerText = winP;
+  localStorage.setItem("winP", winP);
+  localStorage.setItem("winG", winG);
+  resetgame()
+}
+
+rescore.addEventListener("click", resetscore);
